@@ -4,7 +4,7 @@ vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO vlonexti/EKore
     REF "v${VERSION}"
-    SHA512 332ee5502d3370cc77c8a70c1cb2e4f43c0b78e28182cadf52af44c1245effd2fe946e167251f01ef35b6c3400fa7113bea4f22e40e336e244d91aade8b6fb2c
+    SHA512 b440f0519d1b4329a3cd0cd7de84c8fce304c6a1ad88541a95189308e9a1fc78390ecea40cdf33b98e80ab5d55ed522e59c4191a82a5eafd22e67bff9dae1fa1
     HEAD_REF main
 )
 
@@ -24,4 +24,3 @@ vcpkg_cmake_config_fixup(
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
 
 vcpkg_install_copyright(FILE_LIST "${SOURCE_PATH}/LICENSE")
-

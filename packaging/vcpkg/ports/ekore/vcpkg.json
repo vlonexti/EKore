@@ -1,6 +1,6 @@
 {
   "name": "ekore",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "External Windows C++20 process-memory library with architecture-aware pointers, scanning, patches, and typed I/O.",
   "homepage": "https://github.com/vlonexti/EKore",
   "license": "MIT",
@@ -16,4 +16,3 @@
     }
   ]
 }
-
