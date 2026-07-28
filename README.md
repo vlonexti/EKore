@@ -30,6 +30,9 @@ EKore reports failure with invalid objects, `std::optional`, or `bool` instead
 of silently returning zero-filled buffers. The originating Win32 error remains
 available through `Process::LastError()` and `LastErrorMessage()`.
 
+Dear ImGui v1.92.9 is bundled and compiled into the optional MenuKit support.
+No separate ImGui package or configure-time download is required.
+
 ## Capabilities
 
 - Open by PID, executable name, or window
@@ -187,6 +190,7 @@ An applied patch reverts in its destructor by default. Call
 - [API reference](docs/api-reference.md)
 - [Scanning and pointer chains](docs/scanning.md)
 - [Safety and troubleshooting](docs/troubleshooting.md)
+- [MenuKit and D3D11 host](docs/menu-kit.md)
 
 ## Scope
 

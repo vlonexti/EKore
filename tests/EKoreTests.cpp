@@ -30,6 +30,55 @@ EKore::Address AddressOf(T& value) {
 int main() {
     using namespace EKore;
 
+#if defined(EKORE_MENU)
+    UI::MenuHost host;
+    Check(!host.Running() && host.Window() == nullptr,
+          "menu host initial state");
+    UI::MenuKit menu;
+    menu.ApplyTheme(UI::ThemePreset::Midnight);
+    Check(menu.AddPage({
+              "dashboard",
+              "Dashboard",
+              "External controller",
+              {"home"},
+              [] {}}),
+          "menu page registration");
+    Check(!menu.AddPage({
+              "dashboard",
+              "Duplicate",
+              {},
+              {},
+              [] {}}),
+          "duplicate menu page rejected");
+    Check(menu.PageCount() == 1 &&
+              menu.ActivePage() == "dashboard" &&
+              menu.SetActivePage("dashboard") &&
+              !menu.SetActivePage("missing"),
+          "menu navigation model");
+    UI::MenuHostOptions hostOptions;
+    hostOptions.title = L"EKore automated menu test";
+    hostOptions.width = 360;
+    hostOptions.height = 260;
+    hostOptions.resizable = false;
+    hostOptions.vsync = false;
+    hostOptions.dpiAware = true;
+    bool configured = false;
+    bool windowReady = false;
+    hostOptions.windowReady = [&](HWND window) {
+        windowReady = window != nullptr;
+    };
+    hostOptions.configureImGui = [&] {
+        configured = ImGui::GetCurrentContext() != nullptr;
+    };
+    const int hostResult = host.Run([&] {
+        menu.Draw();
+        host.RequestClose();
+    }, hostOptions);
+    Check(hostResult == 0 && !host.Running() &&
+              configured && windowReady,
+          "menu host frame and shutdown");
+#endif
+
     Process process = Process::Open(::GetCurrentProcessId());
     Check(process.Valid(), "open current process");
     Check(process.Alive(), "current process is alive");

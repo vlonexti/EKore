@@ -7,4 +7,3 @@ if(TARGET EKore::EKore AND NOT TARGET EKore::Library)
 endif()
 
 check_required_components(EKore)
-
