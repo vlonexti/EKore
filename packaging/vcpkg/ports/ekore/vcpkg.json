@@ -1,0 +1,19 @@
+{
+  "name": "ekore",
+  "version": "1.0.0",
+  "description": "External Windows C++20 process-memory library with architecture-aware pointers, scanning, patches, and typed I/O.",
+  "homepage": "https://github.com/vlonexti/EKore",
+  "license": "MIT",
+  "supports": "windows & !uwp & !arm",
+  "dependencies": [
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    },
+    {
+      "name": "vcpkg-cmake-config",
+      "host": true
+    }
+  ]
+}
+

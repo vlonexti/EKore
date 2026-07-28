@@ -66,6 +66,9 @@ To install a CMake package:
 cmake --install build --config Release --prefix C:/Libraries/EKore
 ```
 
+An overlay port is also available under
+[`packaging/vcpkg`](packaging/vcpkg/README.md).
+
 ## Add it to a project
 
 From a source checkout:
@@ -195,4 +198,3 @@ software and environment.
 ## License
 
 MIT
-
