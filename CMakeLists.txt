@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(EKore VERSION 1.1.0 LANGUAGES CXX)
+project(EKore VERSION 1.1.1 LANGUAGES CXX)
 
 if(NOT WIN32)
     message(FATAL_ERROR "EKore supports Windows only.")
@@ -24,7 +24,7 @@ if(EKORE_MENU)
         ${EKORE_IMGUI_DIR}/backends/imgui_impl_dx11.cpp)
     target_include_directories(ekore_imgui PUBLIC
         $<BUILD_INTERFACE:${EKORE_IMGUI_DIR}>
-        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/EKore/vendor/imgui>)
     target_compile_definitions(
         ekore_imgui PUBLIC IMGUI_DISABLE_OBSOLETE_FUNCTIONS)
 endif()
@@ -85,7 +85,7 @@ install(FILES README.md LICENSE
 if(EKORE_MENU)
     install(
         DIRECTORY third_party/imgui/
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/EKore/vendor/imgui
         FILES_MATCHING PATTERN "*.h")
     install(
         FILES third_party/imgui/LICENSE.txt
